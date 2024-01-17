@@ -1,0 +1,11 @@
+
+@Repository
+public interface StudentRepository extends JpaRepository<Student, Integer> {
+
+    public boolean existsByEmail(String email);
+
+    public List<Student> findByEmail(String email);
+
+    @Query("select max(s.id) from Student s")
+    public Integer findMaxId();
+}
